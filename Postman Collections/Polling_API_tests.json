@@ -1,0 +1,3068 @@
+{
+	"info": {
+		"_postman_id": "f7ab798d-76f5-4802-8d4d-e614d8131eb8",
+		"name": "Polling API",
+		"description": "A simple API, supporting user accounts, creating and voting in polls.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User management",
+			"item": [
+				{
+					"name": "Signup new user",
+					"id": "b2b5faee-16c1-45c2-954d-934cd0a4d820",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"{{user-full-name}}\",\n\t\"username\":\"{{username}}\",\n\t\"email\":\"{{email}}}\",\n\t\"password\":\"{{password}}\"\n}"
+						},
+						"url": "{{hostname}}/api/auth/signup",
+						"description": "Register new user"
+					},
+					"response": [
+						{
+							"id": "72449185-a08b-4f75-95d6-b6e8011e0da3",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"{{user-full-name}}\",\n\t\"username\":\"{{username}}\",\n\t\"email\":\"{{email}}}\",\n\t\"password\":\"{{password}}\"\n}"
+								},
+								"url": "{{hostname}}/api/auth/signup"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 18:52:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "Location",
+									"value": "http://poll-app-gpg.softacad.bg/users/pancho1"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully\"\n}"
+						},
+						{
+							"id": "7436f3c7-ea01-4dee-bce0-3057cc0f0a95",
+							"name": "Bad request - email already taken",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"{{user-full-name}}\",\n\t\"username\":\"{{username}}\",\n\t\"email\":\"{{email}}}\",\n\t\"password\":\"{{password}}\"\n}"
+								},
+								"url": "{{hostname}}/api/auth/signup"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 18:54:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"message\": \"Email Address already in use!\"\n}"
+						},
+						{
+							"id": "86be5885-ba4f-4bfc-a694-ee34d71b495f",
+							"name": "Bad request - username already taken",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"{{user-full-name}}\",\n\t\"username\":\"{{username}}\",\n\t\"email\":\"{{email}}}\",\n\t\"password\":\"{{password}}\"\n}"
+								},
+								"url": "{{hostname}}/api/auth/signup"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 18:53:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"message\": \"Username is already taken!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Sign in user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9140f626-14ef-4068-897c-0f312782b112",
+								"exec": [
+									"var payload = pm.response.json();",
+									"var token = payload.accessToken;",
+									"",
+									"pm.environment.set(\"accessToken\", token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "71ab8c7b-5948-479b-98a1-1ed06b6a1550",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usernameOrEmail\":\"{{username}}\",\n\t\"password\":\"{{password}}\"\n}"
+						},
+						"url": "{{hostname}}/api/auth/signin",
+						"description": "Sign in using valid username or email."
+					},
+					"response": [
+						{
+							"id": "04fb7aa7-304d-429a-8e53-721cd857172c",
+							"name": "Unauthorized - Bad credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"usernameOrEmail\":\"{{username}}\",\n\t\"password\":\"{{password}}\"\n}"
+								},
+								"url": "{{hostname}}/api/auth/signin"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:02:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:02:13.260+0000\",\n    \"status\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Bad credentials\",\n    \"path\": \"/api/auth/signin\"\n}"
+						},
+						{
+							"id": "6a2f8e95-bda7-4bc0-af44-adda47d35b78",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"usernameOrEmail\":\"{{username}}\",\n\t\"password\":\"{{password}}\"\n}"
+								},
+								"url": "{{hostname}}/api/auth/signin"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:01:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"accessToken\": \"access-token-code-string\",\n    \"tokenType\": \"Bearer\"\n}"
+						},
+						{
+							"id": "bb51c0bd-2fba-478c-ad00-06f73a662d03",
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"usernameOrEmail\":\"{{username}}\",\n\t\"password\":\"{{password}}\"\n}"
+								},
+								"url": "{{hostname}}/api/auth/signin"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:03:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:03:04.207+0000\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"errors\": [\n        {\n            \"codes\": [\n                \"NotBlank.loginRequest.usernameOrEmail\",\n                \"NotBlank.usernameOrEmail\",\n                \"NotBlank.java.lang.String\",\n                \"NotBlank\"\n            ],\n            \"arguments\": [\n                {\n                    \"codes\": [\n                        \"loginRequest.usernameOrEmail\",\n                        \"usernameOrEmail\"\n                    ],\n                    \"arguments\": null,\n                    \"defaultMessage\": \"usernameOrEmail\",\n                    \"code\": \"usernameOrEmail\"\n                }\n            ],\n            \"defaultMessage\": \"must not be blank\",\n            \"objectName\": \"loginRequest\",\n            \"field\": \"usernameOrEmail\",\n            \"rejectedValue\": \"\",\n            \"bindingFailure\": false,\n            \"code\": \"NotBlank\"\n        }\n    ],\n    \"message\": \"Validation failed for object='loginRequest'. Error count: 1\",\n    \"path\": \"/api/auth/signin\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get current user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4dfab003-ce25-4eb7-b912-f6a172f641bf",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "112b69a9-bf73-4305-a618-126081599395",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{hostname}}/api/user/me",
+						"description": "Get currently logged user basic info"
+					},
+					"response": [
+						{
+							"id": "b0249a92-bec2-40e4-a7e9-3fa5eeadec7d",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": "{{hostname}}/api/user/me"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:04:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 1,\n    \"username\": \"username\",\n    \"name\": \"full name\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dac5c62a-49bb-49a3-a3c4-1281a141fdc8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "154d7f62-312c-41af-9172-0f3acfdfea39",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{hostname}}/api/users/{{username}}",
+						"description": "Get profile info per username"
+					},
+					"response": [
+						{
+							"id": "6239c9f6-76a7-4dfa-89b9-42aa8e12837b",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/users/{{username}}"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:05:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 1,\n    \"username\": \"username\",\n    \"name\": \"full name\",\n    \"joinedAt\": \"2019-04-01T15:43:56Z\",\n    \"pollCount\": 2,\n    \"voteCount\": 3\n}"
+						},
+						{
+							"id": "740e78b8-8a1b-44a7-acf1-b88527c7ef3c",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/users/{{username}}"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:06:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:06:12.542+0000\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"User not found with username : 'non-existant'\",\n    \"path\": \"/api/users/non-existant\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get polls for user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01ca6b73-8b02-451b-a006-5041e28a9ff3",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "4a750c37-8567-455a-a037-43c280039f99",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{hostname}}/api/users/{{username}}/polls",
+						"description": "Get all polls per username"
+					},
+					"response": [
+						{
+							"id": "142dad03-acde-4b34-b5f4-669e58687f9a",
+							"name": "Username Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/users/{{username}}/polls"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:10:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:10:20.554+0000\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"User not found with username : 'non-existant'\",\n    \"path\": \"/api/users/non-existant/polls\"\n}"
+						},
+						{
+							"id": "43c575b8-82c0-4335-b1a2-d491faed6dae",
+							"name": "OK - Return no content",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/users/{{username}}/polls"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:09:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"content\": [],\n    \"page\": 0,\n    \"size\": 30,\n    \"totalElements\": 0,\n    \"totalPages\": 0,\n    \"last\": true\n}"
+						},
+						{
+							"id": "6a7577fd-069a-4b0a-be7d-97866716f2ce",
+							"name": "OK - return content",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/users/{{username}}/polls"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:07:53 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"question\": \"What's your favorite color?\",\n            \"choices\": [\n                {\n                    \"id\": 8,\n                    \"text\": \"Red\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 9,\n                    \"text\": \"Blue\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 10,\n                    \"text\": \"Yellow\",\n                    \"voteCount\": 0\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 1,\n                \"username\": \"username\",\n                \"name\": \"full name\"\n            },\n            \"creationDateTime\": \"2019-04-01T18:37:25Z\",\n            \"expirationDateTime\": \"2019-04-1T20:37:25Z\",\n            \"totalVotes\": 0,\n            \"expired\": false\n        },\n        {\n            \"id\": 2,\n            \"question\": \"What's your favorite color?\",\n            \"choices\": [\n                {\n                    \"id\": 6,\n                    \"text\": \"Red\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 7,\n                    \"text\": \"Yellow\",\n                    \"voteCount\": 0\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 1,\n                \"username\": \"username\",\n                \"name\": \"full name\"\n            },\n            \"creationDateTime\": \"2019-01-01T20:49:15Z\",\n            \"expirationDateTime\": \"2019-01-22T22:49:14Z\",\n            \"totalVotes\": 0,\n            \"expired\": true\n        }\n    ],\n    \"page\": 0,\n    \"size\": 30,\n    \"totalElements\": 2,\n    \"totalPages\": 1,\n    \"last\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get votes for user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9bbf51f6-4e02-4393-8850-fa3fead008e6",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "a2f65cdd-4c5a-4845-abbd-aee72f708460",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{hostname}}/api/users/{{username}}/votes",
+						"description": "Get all votes per username"
+					},
+					"response": [
+						{
+							"id": "32ec20b2-059b-4769-9f95-9a96688ebe93",
+							"name": "Username Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/users/{{username}}/votes"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:13:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:13:42.815+0000\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"User not found with username : 'non-existant'\",\n    \"path\": \"/api/users/non-existant/votes\"\n}"
+						},
+						{
+							"id": "7757ed83-c02d-414d-9b0a-63d0245b5529",
+							"name": "OK - return content",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/users/{{username}}/votes"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:12:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 4,\n            \"question\": \"What's your favorite color?\",\n            \"choices\": [\n                {\n                    \"id\": 8,\n                    \"text\": \"Red\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 9,\n                    \"text\": \"Blue\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 10,\n                    \"text\": \"Yellow\",\n                    \"voteCount\": 1\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 1,\n                \"username\": \"username\",\n                \"name\": \"full name\"\n            },\n            \"creationDateTime\": \"2019-04-01T18:37:25Z\",\n            \"expirationDateTime\": \"2019-04-01T20:37:25Z\",\n            \"totalVotes\": 1,\n            \"expired\": false\n        }\n    ],\n    \"page\": 0,\n    \"size\": 30,\n    \"totalElements\": 1,\n    \"totalPages\": 1,\n    \"last\": true\n}"
+						},
+						{
+							"id": "d0f52483-8a67-4573-88d3-6482ad1286cb",
+							"name": "OK - Return no content",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/users/{{username}}/votes"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:13:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"content\": [],\n    \"page\": 0,\n    \"size\": 30,\n    \"totalElements\": 0,\n    \"totalPages\": 0,\n    \"last\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Check username availability",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b00008ee-55bf-4584-9703-d8a3071432ca",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "e323a723-d890-4ab6-a429-25d583fe38a3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{hostname}}/api/user/checkUsernameAvailability?username={{username}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"checkUsernameAvailability"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Check if chosen username is available, i.e. free (true) or already taken (false)"
+					},
+					"response": [
+						{
+							"id": "ce1d0701-fc67-47de-bf43-d86554fbd605",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostname}}/api/user/checkUsernameAvailability?username={{username}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"checkUsernameAvailability"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "{{username}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:15:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"available\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Check email availability",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8c4d57e0-419f-4d6c-97f1-515ff820fa9d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "76728170-4d83-4e87-9947-c90f5b4bc346",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{hostname}}/api/user/checkEmailAvailability?email={{email}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"checkEmailAvailability"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Check if chosen email is available, i.e. free (true) or already taken (false)"
+					},
+					"response": [
+						{
+							"id": "32ef3a91-1b5a-4216-bf4b-f83eec9a8666",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json",
+										"disabled": true
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{accessToken}}"
+									}
+								],
+								"url": {
+									"raw": "{{hostname}}/api/user/checkEmailAvailability?email={{email}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"checkEmailAvailability"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "{{email}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:15:58 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"available\": false\n}"
+						}
+					]
+				}
+			],
+			"id": "0a04df53-9a46-45a1-81a1-492eb93e8d34",
+			"description": "User management endpoints\n- authentication\n- user info"
+		},
+		{
+			"name": "Poll management",
+			"item": [
+				{
+					"name": "Create new poll",
+					"id": "8d042456-a17e-4e18-87d5-fcede1f78a30",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"question\":\"What's your favorite color?\",\n\t\"choices\":[\n\t\t{\"text\":\"Red\"},\n\t\t{\"text\":\"Blue\"},\n\t\t{\"text\":\"Yellow\"}\n\t\t],\n\t\"pollLength\":\n\t{\n\t\t\"days\": 7,\n\t\t\"hours\": 2\n\t}\n}"
+						},
+						"url": "{{hostname}}/api/polls",
+						"description": "Creates new poll.\nRequires authentication."
+					},
+					"response": [
+						{
+							"id": "05d4912f-a97e-459b-b8dd-b95bbdb297ba",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"question\":\"What's your favorite color?\",\n\t\"choices\":[\n\t\t{\"text\":\"Red\"},\n\t\t{\"text\":\"Blue\"},\n\t\t{\"text\":\"Yellow\"}\n\t\t],\n\t\"pollLength\":\n\t{\n\t\t\"days\": 7,\n\t\t\"hours\": 2\n\t}\n}"
+								},
+								"url": "{{hostname}}/api/polls"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:18:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "Location",
+									"value": "http://poll-app-gpg.softacad.bg/api/polls/5"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"Poll Created Successfully\"\n}"
+						},
+						{
+							"id": "96507626-148c-4471-af51-d5dcc83babea",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"question\":\"What's your favorite color?\",\n\t\"choices\":[\n\t\t{\"text\":\"Red\"},\n\t\t{\"text\":\"Blue\"},\n\t\t{\"text\":\"Yellow\"}\n\t\t],\n\t\"pollLength\":\n\t{\n\t\t\"days\": 7,\n\t\t\"hours\": 2\n\t}\n}"
+								},
+								"url": "{{hostname}}/api/polls"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:19:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-08T19:19:37.321+0000\",\n    \"status\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Full authentication is required to access this resource\",\n    \"path\": \"/api/polls\"\n}"
+						},
+						{
+							"id": "eb7639ca-31dd-4f40-9bc8-3fc9c7771f33",
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\n\t\"choices\":[\n\t\t{\"text\":\"Red\"},\n\t\t{\"text\":\"Blue\"},\n\t\t{\"text\":\"Yellow\"}\n\t\t],\n\t\"pollLength\":\n\t{\n\t\t\"days\": 7,\n\t\t\"hours\": 2\n\t}\n}"
+								},
+								"url": "{{hostname}}/api/polls"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:18:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:18:44.718+0000\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"errors\": [\n        {\n            \"codes\": [\n                \"NotBlank.pollRequest.question\",\n                \"NotBlank.question\",\n                \"NotBlank.java.lang.String\",\n                \"NotBlank\"\n            ],\n            \"arguments\": [\n                {\n                    \"codes\": [\n                        \"pollRequest.question\",\n                        \"question\"\n                    ],\n                    \"arguments\": null,\n                    \"defaultMessage\": \"question\",\n                    \"code\": \"question\"\n                }\n            ],\n            \"defaultMessage\": \"must not be blank\",\n            \"objectName\": \"pollRequest\",\n            \"field\": \"question\",\n            \"rejectedValue\": null,\n            \"bindingFailure\": false,\n            \"code\": \"NotBlank\"\n        }\n    ],\n    \"message\": \"Validation failed for object='pollRequest'. Error count: 1\",\n    \"path\": \"/api/polls\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get poll by Id",
+					"id": "6cd235df-05f5-418f-8127-5f1307594496",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{hostname}}/api/polls/{{pollId}}",
+						"description": "Retrieves poll details per poll id."
+					},
+					"response": [
+						{
+							"id": "192a430a-fc2c-4f9d-ae0a-0a007117f5e7",
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/polls/{{pollId}}"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 18:47:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T18:47:20.897+0000\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: \\\"bad-value\\\"\",\n    \"path\": \"/api/polls/bad-value\"\n}"
+						},
+						{
+							"id": "a6c69f1f-acdb-4f57-8e22-952cc9b99fe2",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/polls/{{pollId}}"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 18:39:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-01-08T18:39:54.393+0000\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Poll not found with id : '10'\",\n    \"path\": \"/api/polls/10\"\n}"
+						},
+						{
+							"id": "acb54367-e92a-4cd9-9221-b49fd9428aad",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{hostname}}/api/polls/{{pollId}}"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 18:38:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 4,\n    \"question\": \"What's your favorite color?\",\n    \"choices\": [\n        {\n            \"id\": 8,\n            \"text\": \"Red\",\n            \"voteCount\": 0\n        },\n        {\n            \"id\": 9,\n            \"text\": \"Blue\",\n            \"voteCount\": 0\n        },\n        {\n            \"id\": 10,\n            \"text\": \"Yellow\",\n            \"voteCount\": 0\n        }\n    ],\n    \"createdBy\": {\n        \"id\": 1,\n        \"username\": \"username\",\n        \"name\": \"name\"\n    },\n    \"creationDateTime\": \"2019-01-01T18:37:25Z\",\n    \"expirationDateTime\": \"2019-01-15T20:37:25Z\",\n    \"totalVotes\": 0,\n    \"expired\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "GET all polls by params",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a47b681-c554-489a-af24-00db65bda758",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "de386e12-d6bb-4e84-8393-90fb618a7705",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/polls?page=0&size=30",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"polls"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "30"
+								}
+							]
+						},
+						"description": "Retrieves all polls.\nPage and size params are optional."
+					},
+					"response": [
+						{
+							"id": "173348dd-668c-4e5e-afe2-ecade79e6fb1",
+							"name": "OK - return content",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostname}}/api/polls?page=0&size=30",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"api",
+										"polls"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "30"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:21:29 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 5,\n            \"question\": \"What's your favorite color?\",\n            \"choices\": [\n                {\n                    \"id\": 11,\n                    \"text\": \"Red\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 12,\n                    \"text\": \"Blue\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 13,\n                    \"text\": \"Yellow\",\n                    \"voteCount\": 0\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 1,\n                \"username\": \"username\",\n                \"name\": \"full name\"\n            },\n            \"creationDateTime\": \"2019-04-01T19:18:05Z\",\n            \"expirationDateTime\": \"2019-04-01T21:18:05Z\",\n            \"totalVotes\": 0,\n            \"expired\": false\n        }\n    ],\n    \"page\": 0,\n    \"size\": 30,\n    \"totalElements\": 3,\n    \"totalPages\": 1,\n    \"last\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Vote in a poll",
+					"id": "6a29fd7b-d34c-4403-9330-eb508c595e4c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"choiceId\": 13\n}"
+						},
+						"url": "{{hostname}}/api/polls/{{pollId}}/votes",
+						"description": "Records a vote to chosen poll.\nRequires authentication."
+					},
+					"response": [
+						{
+							"id": "2588bb5f-176f-473f-a9fb-4ba748413c19",
+							"name": "Bad request - already voted",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{accessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"choiceId\": 10\n}"
+								},
+								"url": "{{hostname}}/api/polls/{{pollId}}/votes"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:24:52 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:24:52.490+0000\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Sorry! You have already cast your vote in this poll\",\n    \"path\": \"/api/polls/45/votes\"\n}"
+						},
+						{
+							"id": "504d8c8d-e72d-417d-a1b9-aad1336fc185",
+							"name": "Not found - ChoiceID incorrect",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{accessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"choiceId\": 15\n}"
+								},
+								"url": "{{hostname}}/api/polls/{{pollId}}/votes"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:23:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:23:56.270+0000\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Choice not found with id : '15'\",\n    \"path\": \"/api/polls/45/votes\"\n}"
+						},
+						{
+							"id": "56dbef2b-142b-4b6b-bfae-053179a617a9",
+							"name": "OK - vote accepted",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{accessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"choiceId\": 13\n}"
+								},
+								"url": "{{hostname}}/api/polls/{{pollId}}/votes"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:26:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 5,\n    \"question\": \"What's your favorite color?\",\n    \"choices\": [\n        {\n            \"id\": 11,\n            \"text\": \"Red\",\n            \"voteCount\": 0\n        },\n        {\n            \"id\": 12,\n            \"text\": \"Blue\",\n            \"voteCount\": 0\n        },\n        {\n            \"id\": 13,\n            \"text\": \"Yellow\",\n            \"voteCount\": 1\n        }\n    ],\n    \"createdBy\": {\n        \"id\": 1,\n        \"username\": \"username\",\n        \"name\": \"full name\"\n    },\n    \"creationDateTime\": \"2019-04-01T19:18:05Z\",\n    \"expirationDateTime\": \"2019-04-01T21:18:05Z\",\n    \"selectedChoice\": 13,\n    \"totalVotes\": 1,\n    \"expired\": false\n}"
+						},
+						{
+							"id": "9d3f7237-498c-4cbe-853e-d239273ae38b",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{accessToken}}",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"choiceId\": 13\n}"
+								},
+								"url": "{{hostname}}/api/polls/{{pollId}}/votes"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:26:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"timestamp\": \"2019-04-01T19:26:46.672+0000\",\n    \"status\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Full authentication is required to access this resource\",\n    \"path\": \"/api/polls/45/votes\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete poll by Id",
+					"id": "252fb521-bdf3-4d9b-b054-5f13667c24ae",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{hostname}}/api/polls/{{pollId}}",
+						"description": "Deletes specified poll.\nRequires authorization with superadmin role.\nDelete operation will be unsuccessful if there are any votes related to chosen poll id."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all polls",
+					"id": "e885b36a-e1f2-4ea9-97c2-0b6e717463f5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{hostname}}/api/polls/",
+						"description": "Deletes all polls and votes.\nRequires authorization with superadmin role."
+					},
+					"response": []
+				}
+			],
+			"id": "4ea41199-1f06-4306-bfc7-d57e37c9ef3e",
+			"description": "Poll management endpoints:\n- creating and listing polls\n- voting and getting vote info"
+		},
+		{
+			"name": "Healthcheck",
+			"item": [
+				{
+					"name": "REST API health check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "24b2b22a-c1fe-4ba8-988c-d8677c77a983",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "d719c658-7931-431b-b74d-5077654c3b12",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/polls?page=0&size=30",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"polls"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "30"
+								}
+							]
+						},
+						"description": "Retrieves all polls.\nPage and size params are optional."
+					},
+					"response": [
+						{
+							"id": "5b87351f-11e6-4dd1-a5aa-521a3e65aa4b",
+							"name": "OK - return content",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostname}}/api/polls?page=0&size=30",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"api",
+										"polls"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "30"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:21:29 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 5,\n            \"question\": \"What's your favorite color?\",\n            \"choices\": [\n                {\n                    \"id\": 11,\n                    \"text\": \"Red\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 12,\n                    \"text\": \"Blue\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 13,\n                    \"text\": \"Yellow\",\n                    \"voteCount\": 0\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 1,\n                \"username\": \"username\",\n                \"name\": \"full name\"\n            },\n            \"creationDateTime\": \"2019-04-01T19:18:05Z\",\n            \"expirationDateTime\": \"2019-04-01T21:18:05Z\",\n            \"totalVotes\": 0,\n            \"expired\": false\n        }\n    ],\n    \"page\": 0,\n    \"size\": 30,\n    \"totalElements\": 3,\n    \"totalPages\": 1,\n    \"last\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Swagger endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "807c6e4e-8832-4eed-a474-0b54d32b535c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "825cd1e1-8023-4b4c-8bcc-bd6f28bb648f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{hostname}}/v2/api-docs"
+					},
+					"response": [
+						{
+							"id": "66df35e9-bb4e-4ec6-b05a-3deecd68fa11",
+							"name": "OK - return content",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostname}}/api/polls?page=0&size=30",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"api",
+										"polls"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "30"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 19:21:29 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.29 (Ubuntu)"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 5,\n            \"question\": \"What's your favorite color?\",\n            \"choices\": [\n                {\n                    \"id\": 11,\n                    \"text\": \"Red\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 12,\n                    \"text\": \"Blue\",\n                    \"voteCount\": 0\n                },\n                {\n                    \"id\": 13,\n                    \"text\": \"Yellow\",\n                    \"voteCount\": 0\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 1,\n                \"username\": \"username\",\n                \"name\": \"full name\"\n            },\n            \"creationDateTime\": \"2019-04-01T19:18:05Z\",\n            \"expirationDateTime\": \"2019-04-01T21:18:05Z\",\n            \"totalVotes\": 0,\n            \"expired\": false\n        }\n    ],\n    \"page\": 0,\n    \"size\": 30,\n    \"totalElements\": 3,\n    \"totalPages\": 1,\n    \"last\": true\n}"
+						}
+					]
+				}
+			],
+			"id": "95e5b46a-621d-45bd-b024-7b735466814d"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a37badc9-0749-4000-9467-a070f26f2dbf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ac2abd28-a15d-439b-b204-2780f209878d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
